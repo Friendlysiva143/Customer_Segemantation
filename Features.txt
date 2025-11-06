@@ -1,0 +1,47 @@
+🧾 Customer Demographics
+Feature	Description
+ID	Unique identifier for each customer.
+Year_Birth	Year the customer was born — used to calculate their age.
+Education	Level of education (e.g., Basic, Graduation, Master, PhD).
+Marital_Status	Customer’s marital status (e.g., Single, Married, Together, Divorced, Widow).
+Income	Annual household income of the customer (in currency units).
+Kidhome	Number of small children (under 12 years old) in the household.
+Teenhome	Number of teenagers (13–19 years old) in the household.
+📅 Customer Relationship Info
+Feature	Description
+Dt_Customer	Date the customer enrolled or became a client.
+Recency	Number of days since the customer’s last purchase — a key RFM (Recency-Frequency-Monetary) feature.
+🛍️ Amount Spent on Different Product Categories
+
+Each of these shows the total money spent by the customer on specific product types in the last 2 years.
+
+Feature	Description
+MntWines	Amount spent on wine.
+MntFruits	Amount spent on fruits.
+MntMeatProducts	Amount spent on meat products.
+MntFishProducts	Amount spent on fish products.
+MntSweetProducts	Amount spent on sweets.
+MntGoldProds	Amount spent on gold or luxury products.
+🛒 Purchasing Behavior
+Feature	Description
+NumDealsPurchases	Number of purchases made with a discount or deal.
+NumWebPurchases	Number of purchases made through the company’s website.
+NumCatalogPurchases	Number of purchases made using a catalog.
+NumStorePurchases	Number of purchases made directly in stores.
+NumWebVisitsMonth	Number of visits to the company’s website in the last month.
+📢 Campaign Responses
+
+These show whether a customer accepted an offer during past marketing campaigns (1 = accepted, 0 = not accepted).
+
+Feature	Description
+AcceptedCmp1	Response to campaign 1.
+AcceptedCmp2	Response to campaign 2.
+AcceptedCmp3	Response to campaign 3.
+AcceptedCmp4	Response to campaign 4.
+AcceptedCmp5	Response to campaign 5.
+Response	Response to the most recent campaign (1 = accepted, 0 = not accepted). This is often the target variable in prediction tasks.
+⚠️ Other Features
+Feature	Description
+Complain	1 if the customer has complained in the last 2 years, 0 otherwise.
+Z_CostContact	Cost of a contact to the company (a constant for all records, usually 3).
+Z_Revenue	Revenue from a single sale contact (a constant for all records, usually 11).
