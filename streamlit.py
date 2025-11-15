@@ -59,9 +59,19 @@ if option == "📁 Upload CSV File":
         # Fill missing categorical values with mode
         for col in cat_cols:
             df[col] = df[col].fillna(df[col].mode()[0] if not df[col].mode().empty else "Unknown")
+        
 
         st.success("✅ Missing values handled successfully!")
+        df['Age'] = datetime.now().year-df['Year_Birth']
+        df['Age'] = np.where(df['Age'] < 18, 18,np.where(df['Age'] > 100, 100, df['Age']))
+        # Convert to datetime
+        df['Dt_Customer'] = pd.to_datetime(df['Dt_Customer'], format="%d-%m-%Y", errors='coerce')
 
+        df['Customer_Since_Days'] = (pd.Timestamp.today() - df['Dt_Customer']).dt.days
+
+
+
+        
         # ------------------------------------------
         #  Apply Transformations (as used in training)
         # ------------------------------------------
@@ -142,8 +152,7 @@ if option == "📁 Upload CSV File":
         # Set 1 for the matching category
         for category in marital_categories:
             df.loc[df['Marital_Status'] == category, f"Marital_Status_{category}"] = 1
-
-
+        
         # ------------------------------------------
         #  Define Final Feature Columns
         # ------------------------------------------
@@ -157,7 +166,8 @@ if option == "📁 Upload CSV File":
             'Education_Ordinal', 'Marital_Status_Married', 'Marital_Status_Single',
             'Marital_Status_Together', 'Marital_Status_Widow', 'campaign'
         ]
-
+        st.write("Checking for NaN before PCA...")
+        st.write(df[feature_cols].isna().sum())
         missing_cols = [col for col in feature_cols if col not in df.columns]
         if missing_cols:
             st.warning(f"⚠️ Missing columns in uploaded file: {missing_cols}")
